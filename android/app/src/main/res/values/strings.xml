@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GMT AZ Reservations</string>
+    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
+    <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+    <!-- Production Key -->
+     <string moduleConfig="true" name="CodePushDeploymentKey">A5aLLxP1r5Li5ok_AWauFrXaPCxD_613KJQK0</string>
+    <!-- Development Key -->
+     <!-- <string moduleConfig="true" name="CodePushDeploymentKey">Er4_k57Jtgf2x_Yr92zvGDXuTrNakX7rSV5Iy-</string> -->
+</resources>

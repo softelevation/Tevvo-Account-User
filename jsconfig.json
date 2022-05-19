@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "_screens": ["src/screens/index.js"],
+      "_elements": ["src/components/index.js"],
+      "_routeName": ["src/routes/route-names.js"],
+      "_constants": ["src/utils/constants.js"]
+    }
+  }
+}
