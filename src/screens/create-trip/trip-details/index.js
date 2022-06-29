@@ -144,6 +144,20 @@ const TripDetails = () => {
           pick_date_time: strictValidObjectWithKeys(tripData)
             ? formatDateTime(tripData.pick_up_date_time)
             : '',
+          room_no:
+            strictValidObjectWithKeys(tripData) &&
+            strictValidObjectWithKeys(tripData.base_patient)
+              ? tripData.base_patient.room_no
+              : '',
+          drop_off_room_no: strictValidObjectWithKeys(tripData)
+            ? tripData.base_patient.drop_off_room_no
+            : '',
+          pick_up_stairs: strictValidObjectWithKeys(tripData)
+            ? tripData.pick_up_stairs
+            : 0,
+          drop_off_stairs: strictValidObjectWithKeys(tripData)
+            ? tripData.drop_off_stairs
+            : 0,
         }}
         onSubmit={onSubmit}
         validationSchema={yup.object().shape({
@@ -194,6 +208,37 @@ const TripDetails = () => {
                       errors.trip_pickup_location
                     }
                   />
+                  <TextInput
+                    mode="outlined"
+                    value={values.room_no}
+                    error={touched.room_no && errors.room_no}
+                    onChangeText={handleChange('room_no')}
+                    onBlur={() => setFieldTouched('room_no')}
+                    label={'Pick-up Room Number (Optional)'}
+                    placeholder={'Pick-up Room Number (Optional)'}
+                    autoCapitalize="none"
+                    style={TextInputStyle.containerStyleWithMargin}
+                    keyboardType="email-address"
+                    returnKeyType="next"
+                  />
+                  <TextInput
+                    mode="outlined"
+                    value={
+                      typeof values.pick_up_stairs === 'number'
+                        ? values.pick_up_stairs.toString()
+                        : values.pick_up_stairs
+                    }
+                    error={touched.pick_up_stairs && errors.pick_up_stairs}
+                    onChangeText={handleChange('pick_up_stairs')}
+                    onBlur={() => setFieldTouched('pick_up_stairs')}
+                    label={'Pick-up Stairs at Location ?'}
+                    placeholder={'Pick-up Stairs at Location ?'}
+                    autoCapitalize="none"
+                    style={TextInputStyle.containerStyleWithMargin}
+                    keyboardType="number-pad"
+                    returnKeyType="next"
+                    right={<TextInput.Affix text="Count" />}
+                  />
                   <GooglePlacesTextInput
                     searchKeyword={values.trip_dropoff_location}
                     onPress={(data, details) => {
@@ -217,17 +262,37 @@ const TripDetails = () => {
                       errors.trip_dropoff_location
                     }
                   />
-                  {/* <TextInput
+                  <TextInput
                     mode="outlined"
-                    value={values.last_name}
-                    onChangeText={handleChange('last_name')}
-                    onBlur={() => setFieldTouched('last_name')}
-                    placeholder={'Date And Time'}
+                    value={values.drop_off_room_no}
+                    error={touched.drop_off_room_no && errors.drop_off_room_no}
+                    onChangeText={handleChange('drop_off_room_no')}
+                    onBlur={() => setFieldTouched('drop_off_room_no')}
+                    label={'Drop-Off Room Number (Optional)'}
+                    placeholder={'Drop-Off Room Number (Optional)'}
                     autoCapitalize="none"
                     style={TextInputStyle.containerStyleWithMargin}
                     keyboardType="email-address"
                     returnKeyType="next"
-                  /> */}
+                  />
+                  <TextInput
+                    mode="outlined"
+                    value={
+                      typeof values.drop_off_stairs === 'number'
+                        ? values.drop_off_stairs.toString()
+                        : values.drop_off_stairs
+                    }
+                    error={touched.drop_off_stairs && errors.drop_off_stairs}
+                    onChangeText={handleChange('drop_off_stairs')}
+                    onBlur={() => setFieldTouched('drop_off_stairs')}
+                    label={'Drop-Off Stairs at Location ?'}
+                    placeholder={'Drop-Off Stairs at Location ?'}
+                    autoCapitalize="none"
+                    style={TextInputStyle.containerStyleWithMargin}
+                    keyboardType="number-pad"
+                    returnKeyType="next"
+                    right={<TextInput.Affix text="Count" />}
+                  />
                   <TextInput
                     placeholder={'Pick Up Time *'}
                     label={'Pick Up Time *'}

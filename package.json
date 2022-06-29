@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "code-push": "appcenter codepush release-react -a bharatsoftelevation-gmail.com/Medicaar-Account-User -d Production",
+    "code-push": "appcenter codepush release-react -a bharatsoftelevation-gmail.com/Account-User-Staging -d Production",
     "code-push:android": "appcenter codepush release-react -a bharatsoftelevation-gmail.com/Medicaar-Account-User-Android -d Production",
     "ios:11": "react-native run-ios --simulator='iPhone 11'",
     "android-reverse-ports": "adb reverse tcp:8097 tcp:8097 && adb reverse tcp:8081 tcp:8081"

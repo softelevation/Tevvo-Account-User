@@ -2,7 +2,8 @@ export const API_URL = {
   // BASE_URL: 'http://localhost:7000',
   // BASE_URL: 'https://medicstag-back.softelevation.com',
   // BASE_URL: 'https://gmt-azback.softelevation.com',
-  BASE_URL: 'https://stg-azback.softelevation.com',
+  // BASE_URL: 'https://stg-azback.softelevation.com',
+  BASE_URL: 'https://prodstgback.softelevation.com',
   lOGIN_URL: '/login',
   PROFILE_URL: '/profile',
   USER_TRIP: '/account-user/trip',
@@ -15,7 +16,7 @@ export const API_URL = {
   SECRET_KEY: 'admin123',
   CAPABILITY_URL: '/admin/active-capability',
   CREATE_TRIP: '/account-user/trip',
-  appVersion: 'GMT-004v',
+  appVersion: 'GMT-005v',
 };
 export const STATUS_URL = {
   Planned_Status: 'planned',

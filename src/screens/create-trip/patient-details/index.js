@@ -70,6 +70,7 @@ const PatientDetails = () => {
     console.warn('A date has been picked: ', date);
     hideDatePicker();
   };
+  console.log(tripData, 'tripData');
   return (
     <>
       <Formik
@@ -105,11 +106,9 @@ const PatientDetails = () => {
             strictValidObjectWithKeys(tripData.base_patient)
               ? tripData.base_patient.weight
               : '',
-          room_no:
-            strictValidObjectWithKeys(tripData) &&
-            strictValidObjectWithKeys(tripData.base_patient)
-              ? tripData.base_patient.weight
-              : '',
+          oxygen: strictValidObjectWithKeys(tripData)
+            ? tripData.base_patient.oxygen
+            : 0,
         }}
         onSubmit={onSubmit}
         validationSchema={yup.object().shape({
@@ -130,6 +129,7 @@ const PatientDetails = () => {
           dirty,
         }) => (
           <>
+            {console.log(values, 'jjj')}
             <KeyboardAwareScrollView
               bounce={false}
               style={{backgroundColor: '#fff'}}
@@ -249,16 +249,21 @@ const PatientDetails = () => {
                   />
                   <TextInput
                     mode="outlined"
-                    value={values.room_no}
-                    error={touched.room_no && errors.room_no}
-                    onChangeText={handleChange('room_no')}
-                    onBlur={() => setFieldTouched('room_no')}
-                    label={'Room Number (Optional)'}
-                    placeholder={'Room Number (Optional)'}
+                    value={
+                      typeof values.oxygen === 'number'
+                        ? values.oxygen.toString()
+                        : values.oxygen
+                    }
+                    error={touched.oxygen && errors.oxygen}
+                    onChangeText={handleChange('oxygen')}
+                    onBlur={() => setFieldTouched('oxygen')}
+                    label={'Need Oxygen ?'}
+                    placeholder={'Need Oxygen ?'}
                     autoCapitalize="none"
                     style={TextInputStyle.containerStyleWithMargin}
-                    keyboardType="email-address"
+                    keyboardType="number-pad"
                     returnKeyType="next"
+                    right={<TextInput.Affix text="ltr" />}
                   />
                 </Block>
               </Block>
